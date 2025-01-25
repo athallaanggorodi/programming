@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jchart/dist/jchart.min.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3" style="background-color: #43A7B9 !important;">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">Fellow Agiles</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">Favorite Places</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="additional-conditions.html">Additional Conditions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="air-quality.html">Air Quality</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container my-5">
+        <section id="weather" class="card p-4 mb-4">
+            <div id="weather-condition" class="d-flex align-items-center mb-4">
+                <i id="weather-icon" class="wi"></i>
+                <div class="ml-4">
+                    <h1 id="weather-description"></h1>
+                    <div id="temperature" class="d-flex align-items-center">
+                        <span id="temp-value"></span>
+                        <button id="toggle-temp" class="btn btn-primary ml-3">Change to °F</button>
+                    </div>
+                    <p id="location"></p>
+                    <p id="time-value"></p>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" id="city-input" class="form-control" placeholder="Enter city name">
+                <div class="input-group-append">
+                    <button id="search-city" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+            <button id="add-to-favorites" class="btn btn-secondary">Add to Favorites</button>
+        </section>
+        <section id="forecast" class="card p-4 mb-4">
+            <h2>Weather Forecast</h2>
+            <div id="forecast-data"></div>
+        </section>
+        <section id="chart-section" class="card p-4 mb-4">
+            <h2>Temperature Chart</h2>
+            <canvas id="temperature-chart"></canvas>
+        </section>
+        <section id="map-section" class="card p-4">
+            <h2>Map</h2>
+            <div id="map"></div>
+        </section>
+    </main>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

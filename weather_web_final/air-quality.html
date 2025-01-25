@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3" style="background-color: #43A7B9 !important;">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">Fellow Agiles</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">Favorite Places</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="additional-conditions.html">Additional Conditions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="air-quality.html">Air Quality</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container my-5">
+        <h1 class="mb-4">Air Quality</h1>
+        <div class="mb-3">
+            <label for="region-select" class="form-label">Select Region:</label>
+            <select id="region-select" class="form-control">
+                <option value="uk">UK</option>
+                <option value="europe">Europe</option>
+                <option value="usa">USA</option>
+            </select>
+            <button id="fetch-air-quality" class="btn btn-primary mt-3">Fetch Air Quality</button>
+        </div>
+        <div id="air-quality-data" class="card p-4">
+            <p>Air Quality Index: <span id="aqi"></span></p>
+            <p>PM2.5: <span id="pm25"></span></p>
+            <p>PM10: <span id="pm10"></span></p>
+        </div>
+        <div id="uk-table" style="display:none;" class="card p-4">
+            <h2>Air quality index levels scale in UK</h2>
+            <p>Below is a description of UK Air Quality Index levels:</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Qualitative name</th>
+                        <th>Index</th>
+                        <th>Pollutant concentration in µg/m³</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Low</td>
+                        <td>1</td>
+                        <td>SO₂: 0-88<br>NO₂: 0-67<br>PM₂.₅: 0-11<br>PM₁₀: 0-16<br>O₃: 0-33</td>
+                    </tr>
+                    <tr>
+                        <td>Low</td>
+                        <td>2</td>
+                        <td>SO₂: 89-177<br>NO₂: 68-134<br>PM₂.₅: 12-23<br>PM₁₀: 17-33<br>O₃: 34-66</td>
+                    </tr>
+                    <tr>
+                        <td>Low</td>
+                        <td>3</td>
+                        <td>SO₂: 178-266<br>NO₂: 135-200<br>PM₂.₅: 24-35<br>PM₁₀: 34-50<br>O₃: 67-100</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                        <td>4</td>
+                        <td>SO₂: 267-354<br>NO₂: 201-267<br>PM₂.₅: 36-41<br>PM₁₀: 52-58<br>O₃: 101-120</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                        <td>5</td>
+                        <td>SO₂: 355-443<br>NO₂: 268-334<br>PM₂.₅: 42-47<br>PM₁₀: 59-66<br>O₃: 121-140</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                        <td>6</td>
+                        <td>SO₂: 444-532<br>NO₂: 335-400<br>PM₂.₅: 48-53<br>PM₁₀: 67-75<br>O₃: 141-160</td>
+                    </tr>
+                    <tr>
+                        <td>High</td>
+                        <td>7</td>
+                        <td>SO₂: 533-710<br>NO₂: 401-467<br>PM₂.₅: 54-58<br>PM₁₀: 76-83<br>O₃: 161-187</td>
+                    </tr>
+                    <tr>
+                        <td>High</td>
+                        <td>8</td>
+                        <td>SO₂: 711-887<br>NO₂: 468-534<br>PM₂.₅: 59-64<br>PM₁₀: 84-91<br>O₃: 188-213</td>
+                    </tr>
+                    <tr>
+                        <td>High</td>
+                        <td>9</td>
+                        <td>SO₂: 888-1064<br>NO₂: 535-600<br>PM₂.₅: 65-70<br>PM₁₀: 92-100<br>O₃: 214-240</td>
+                    </tr>
+                    <tr>
+                        <td>Very High</td>
+                        <td>10</td>
+                        <td>SO₂: ≥1065<br>NO₂: ≥601<br>PM₂.₅: ≥71<br>PM₁₀: ≥101<br>O₃: ≥241</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="europe-table" style="display:none;" class="card p-4">
+            <h2>Air quality index levels scale in Europe</h2>
+            <p>Below is a description of Europe Air Quality Index levels:</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Qualitative name</th>
+                        <th>Index or sub-index</th>
+                        <th>Pollutant (hourly) concentration in µg/m³</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Very Low</td>
+                        <td>0-25</td>
+                        <td>NO₂: 0-50<br>PM₁₀: 0-25<br>O₃: 0-60<br>PM₂.₅: 0-15</td>
+                    </tr>
+                    <tr>
+                        <td>Low</td>
+                        <td>25-50</td>
+                        <td>NO₂: 50-100<br>PM₁₀: 25-50<br>O₃: 60-120<br>PM₂.₅: 15-30</td>
+                    </tr>
+                    <tr>
+                        <td>Medium</td>
+                        <td>50-75</td>
+                        <td>NO₂: 100-200<br>PM₁₀: 50-90<br>O₃: 120-180<br>PM₂.₅: 30-55</td>
+                    </tr>
+                    <tr>
+                        <td>High</td>
+                        <td>75-100</td>
+                        <td>NO₂: 200-400<br>PM₁₀: 90-180<br>O₃: 180-240<br>PM₂.₅: 55-110</td>
+                    </tr>
+                    <tr>
+                        <td>Very high</td>
+                        <td>>100</td>
+                        <td>NO₂: >400<br>PM₁₀: >180<br>O₃: >240<br>PM₂.₅: >110</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="usa-table" style="display:none;" class="card p-4">
+            <h2>Air quality index levels scale in USA</h2>
+            <p>Below is a description of USA Air Quality Index levels:</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>AQI</th>
+                        <th>Level of health concern</th>
+                        <th>Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0 to 50</td>
+                        <td>Good</td>
+                        <td>Green</td>
+                    </tr>
+                    <tr>
+                        <td>51 to 100</td>
+                        <td>Moderate</td>
+                        <td>Yellow</td>
+                    </tr>
+                    <tr>
+                        <td>101 to 150</td>
+                        <td>Unhealthy for sensitive groups</td>
+                        <td>Orange</td>
+                    </tr>
+                    <tr>
+                        <td>151 - 200</td>
+                        <td>Unhealthy</td>
+                        <td>Red</td>
+                    </tr>
+                    <tr>
+                        <td>201-300</td>
+                        <td>Very unhealthy</td>
+                        <td>Purple</td>
+                    </tr>
+                    <tr>
+                        <td>301-500</td>
+                        <td>Hazardous</td>
+                        <td>Maroon</td>
+                    </tr>
+                    <tr>
+                        <td>501-1000</td>
+                        <td>Very Hazardous</td>
+                        <td>Brown</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
